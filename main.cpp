@@ -1,5 +1,4 @@
 #include <SDL.h>
-#include <SDL_image.h>
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
@@ -7,10 +6,19 @@
 #include <ctype.h>
 #include <string>
 
-const int WINDOW_WIDTH = 2000;
-const int WINDOW_HEIGHT = 1200;
+/*
+Author: Rhys Brockenshire
+must have SDL2 Libraries and include files in C:/ Drive to work
+once running, any character other than 'x' or 'z' input into the consol randomizes the pattern
+after inputting x, input a number to define the pixel distance between lines in the patter
+inputting z will exit the application
 
-RenderWindow window("woo gaming learning yes", WINDOW_WIDTH, WINDOW_HEIGHT);
+an internship would be greatly appreciated
+*/
+const int WINDOW_WIDTH = 2000; // Window Width in pixels
+const int WINDOW_HEIGHT = 1200; // Window Height in pixels
+
+RenderWindow window("title", WINDOW_WIDTH, WINDOW_HEIGHT);
 SDL_Surface* s = SDL_CreateRGBSurface(0, WINDOW_WIDTH, WINDOW_HEIGHT, 255, 0, 0, 255, 0);
 SDL_Rect* box;
 int gapdistance = 15;
@@ -76,13 +84,7 @@ int main(int argc, char* args[]) {
 		std::cout << "STD_Init FAILED" << SDL_GetError() << std::endl;
 	}
 
-	if (!(IMG_Init(IMG_INIT_PNG))) {
-		std::cout << "IMG_Init FAILED" << SDL_GetError() << std::endl;
-	}
 	srand(time(NULL));
-	
-
-	SDL_Texture* mantexture = window.loadTexture("Rendering\\gfx\\Man.png");
 
 	bool gameRunning = true;
 
